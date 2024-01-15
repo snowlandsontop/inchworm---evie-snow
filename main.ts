@@ -1,10 +1,12 @@
 radio.onReceivedNumber(function (receivedNumber) {
     music.setVolume(60)
     music.play(music.stringPlayable("- - - - - - - - ", 120), music.PlaybackMode.UntilDone)
-    pins.servoWritePin(AnalogPin.P0, 0)
-    basic.pause(200)
-    pins.servoWritePin(AnalogPin.P0, 180)
-    basic.pause(200)
+    for (let index = 0; index < 3; index++) {
+        pins.servoWritePin(AnalogPin.P0, 0)
+        basic.pause(200)
+        pins.servoWritePin(AnalogPin.P0, 180)
+        basic.pause(200)
+    }
 })
 input.onButtonPressed(Button.A, function () {
     radio.sendNumber(1)
@@ -13,7 +15,9 @@ input.onSound(DetectedSound.Loud, function () {
     radio.sendString("back")
 })
 radio.onReceivedString(function (receivedString) {
-    for (let index = 0; index < 4; index++) {
+    for (let index = 0; index < 3; index++) {
+        pins.servoWritePin(AnalogPin.P0, 180)
+        basic.pause(200)
         basic.showLeds(`
             . . . . .
             . . . . .
@@ -21,31 +25,35 @@ radio.onReceivedString(function (receivedString) {
             . . . . .
             . . # . .
             `)
-        basic.pause(100)
+        pins.servoWritePin(AnalogPin.P0, 0)
+        basic.pause(200)
         basic.showLeds(`
             . . . . .
-            . . . . .
-            . . . . .
-            . . # . .
-            . # # # .
-            `)
-        basic.pause(100)
-        basic.showLeds(`
             . . . . .
             . . . . .
             . . # . .
             . # # # .
-            # # # # #
             `)
-        basic.pause(100)
+        pins.servoWritePin(AnalogPin.P0, 180)
+        basic.pause(200)
         basic.showLeds(`
+            . . . . .
             . . . . .
             . . # . .
             . # # # .
             # # # # #
+            `)
+        pins.servoWritePin(AnalogPin.P0, 0)
+        basic.pause(200)
+        basic.showLeds(`
+            . . . . .
+            . . # . .
+            . # # # .
+            # # # # #
             . . # . .
             `)
-        basic.pause(100)
+        pins.servoWritePin(AnalogPin.P0, 180)
+        basic.pause(200)
         basic.showLeds(`
             . . # . .
             . # # # .
@@ -53,9 +61,7 @@ radio.onReceivedString(function (receivedString) {
             . . # . .
             . . # . .
             `)
+        pins.servoWritePin(AnalogPin.P0, 0)
+        basic.pause(200)
     }
-    pins.servoWritePin(AnalogPin.P0, 180)
-    basic.pause(200)
-    pins.servoWritePin(AnalogPin.P0, 0)
-    basic.pause(200)
 })

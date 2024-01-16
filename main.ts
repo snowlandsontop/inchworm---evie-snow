@@ -61,8 +61,8 @@ input.onButtonPressed(Button.A, function () {
 })
 radio.onReceivedString(function (receivedString) {
     music.setVolume(60)
-    music.play(music.stringPlayable("- - - - - - - - ", 120), music.PlaybackMode.UntilDone)
     for (let index = 0; index < 3; index++) {
+        music.play(music.stringPlayable("A F - C - - - - ", 120), music.PlaybackMode.UntilDone)
         pins.servoWritePin(AnalogPin.P0, 0)
         basic.pause(200)
         pins.servoWritePin(AnalogPin.P0, 180)

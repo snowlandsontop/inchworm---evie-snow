@@ -48,6 +48,13 @@ radio.onReceivedNumber(function (receivedNumber) {
         pins.servoWritePin(AnalogPin.P0, 0)
         basic.pause(200)
     }
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        `)
 })
 input.onButtonPressed(Button.A, function () {
     radio.sendNumber(1)

@@ -52,9 +52,6 @@ radio.onReceivedNumber(function (receivedNumber) {
 input.onButtonPressed(Button.A, function () {
     radio.sendNumber(1)
 })
-input.onSound(DetectedSound.Loud, function () {
-    radio.sendString("back")
-})
 radio.onReceivedString(function (receivedString) {
     music.setVolume(60)
     music.play(music.stringPlayable("- - - - - - - - ", 120), music.PlaybackMode.UntilDone)
@@ -66,5 +63,5 @@ radio.onReceivedString(function (receivedString) {
     }
 })
 input.onGesture(Gesture.Shake, function () {
-	
+    radio.sendString("back")
 })
